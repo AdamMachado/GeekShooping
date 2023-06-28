@@ -9,7 +9,7 @@ namespace GeekShooping.ProductAPI.Repository
         Task<ProductVO> FindById(long id);
         Task<ProductVO> Create(ProductVO vo);
         Task<ProductVO> Update(ProductVO vo);
-        Task Delete(long id);
+        Task<bool> Delete(long id);
        
 
     }

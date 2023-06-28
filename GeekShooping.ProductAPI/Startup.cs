@@ -2,7 +2,7 @@
 using AutoMapper;
 using GeekShooping.ProductAPI.Config;
 using GeekShooping.ProductAPI.Model.Context;
-
+using GeekShooping.ProductAPI.Repository;
 using Microsoft.EntityFrameworkCore;
 
 using Microsoft.OpenApi.Models;
@@ -31,6 +31,7 @@ namespace GeekShooping.ProductAPI
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
