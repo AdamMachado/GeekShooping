@@ -34,13 +34,13 @@ namespace GeekShooping.Web.Services
         }
         public async Task<ProductModel> UpdateProduct(ProductModel model)
         {
-            var response = await _client.PostAsJson(BasePath, model);
+            var response = await _client.PutAsJson(BasePath, model);
             if (response.IsSuccessStatusCode)
                 return await response.ReadContentAs<ProductModel>();
             else throw new Exception("Something went wrong when calling API");
         }
 
-        public async Task<bool> DeleteProduct(long id)
+        public async Task<bool> DeleteProductById(long id)
         {
             var response = await _client.DeleteAsync($"{BasePath}/{id}");
             if (response.IsSuccessStatusCode)
